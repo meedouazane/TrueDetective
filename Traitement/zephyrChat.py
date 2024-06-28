@@ -4,7 +4,6 @@ ZepherChat module to check given text
 """
 from openai import OpenAI
 import os
-import datetime
 from fpdf import FPDF
 from Result2pdf import header_check, text_writer
 
@@ -34,9 +33,9 @@ def check(content):
     )
     os.makedirs('./tmp_Result', exist_ok=True)
     pdf = FPDF('P', 'mm', 'Letter')
-    name = 'checking'
-    suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
-    filename = "_".join([name, suffix])
+    filename = 'checking'
+    #suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
+    #filename = "_".join([name, suffix])
     with open(f'./tmp_Result/{filename}', 'w') as f:
         f.write(completion.choices[0].message.content)
     header_check(pdf)
