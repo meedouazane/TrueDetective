@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Download your YouTube videos as MP3 (audio) or MP4 (video) files for free with the fastest and most powerful YouTube Converter. No app or software needed.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="web/images/logo.png" >
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
+    <script type="text/javascript" src="web/scripts/main_page.js"></script>
+        <link rel="stylesheet" href="web/styles/style.css">
+        <title>True Detective - Your Guardian Against Misinformation </title>
+    </head>
+    <body>
+        <div id="header">
+        </div>
+        <div id="logo">
+            <a href="/">
+                <img src="web/images/logo.png" width="420" height="200" alt="Logo">
+            </a>
+        </div>
+        <form autocomplete="off" method="post" id="videoForm">
+            <div>
+                <label for="youtubeUrl">Please insert a valid YouTube video URL</label>
+            </div>
+            <div>
+                <input id="youtubeUrl" type="text" name="url" placeholder="youtube.com/watch?v=YoU-tuBe_24" autofocus required>
+                <input type="submit" value="Submit">
+            </div>
+            <div id="checkBlock">
+                <input type="checkbox" id="Translate" name="Translate" value="Translate">
+                <label for="Translate"> Translate </label><br>
+                <input type="checkbox" id="Check" name="Check" value="Check" >
+                <label for="Check"> Run Misinformation Check </label><br>
+                <input type="checkbox" id="Convert" name="Convert" value="Convert">
+                <label for="Convert"> Convert </label><br>
+            </div>
+
+        </form>
+             <div id="spinner" class="spinner"></div>
+        <p id="download_links"></p>
+        <p id="title_case"></p>
+        <p id="description"></p>
+        <div id="footer">
+            <a href="/contact/">Contact</a>
+            <a href="/copyright-claims/">Copyright Claims</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/terms-of-use/">Terms of Use</a>
+        </div>
+    </body>
+</html>
