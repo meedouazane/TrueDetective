@@ -4,11 +4,22 @@ Speech to text module
 """
 import requests
 from pytube import YouTube
-import datetime
 import os
 from fpdf import FPDF
 from Result2pdf import header_translate, text_writer
 from tqdm import tqdm
+from bs4 import BeautifulSoup
+
+
+def get_title(url):
+    """
+    get the title of the video from YouTube url
+    """
+    r = requests.get(url)
+    s = BeautifulSoup(r.text, "html.parser")
+    title = str(s.title)
+    title = title.replace('<title>', '').replace('- YouTube</title>', '')
+    return title
 
 
 def extract_audio_from_youtube(url):
@@ -30,6 +41,7 @@ def extract_audio_from_youtube(url):
     os.makedirs('./tmp_Audio', exist_ok=True)
 
     # Generate random name for audio file
+    #title = get_title(url)
     filename = 'myAudio.mp3'
 
     # Initialize tqdm progress bar
@@ -55,9 +67,9 @@ def speech_to_text(files, language=None, translate=False):
         "translate": translate,
         "response_format": "text"
     }
-    name = 'translation'
-    suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
-    filename = "_".join([name, suffix])
+    filename = 'translation'
+    #suffix = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
+    #filename = "_".join([name, suffix])
     response = requests.post(url, headers=headers, files=files, data=data)
     if translate:
         # Ensure the directory exists
