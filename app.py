@@ -4,7 +4,7 @@ app module
 """
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from gtts import gTTS
-from Traitement.Speech2Text import extract_audio_from_youtube, speech_to_text
+from Traitement.Speech2Text import extract_audio_from_youtube, speech_to_text, get_title
 from Traitement.zephyrChat import check
 from flask_cors import CORS
 
@@ -16,7 +16,7 @@ app.template_folder = 'web/'
 
 @app.route('/translate', methods=['POST'], strict_slashes=False)
 def translate_vid():
-    """ Extracting audio from YouTube videos and translate it """
+    """Extracting audio from YouTube videos and translate it"""
     url = request.form.get('url')
     local_file = request.form.get('path')
     if not url and not local_file:
@@ -77,14 +77,14 @@ def check_vid():
 
 @app.route('/Translated_Audio/myAudio.mp3')
 def mp3_file():
-    """ Route to serve mp3 file """
+    """ Route to serve png file """
     filename = 'myAudio.mp3'
     return send_from_directory('Translated_Audio/', filename)
 
 
 @app.route('/tmp_Audio/myAudio.mp3')
 def mp3_convert():
-    """ Route to serve mp3 file """
+    """ Route to serve png file """
     filename = 'myAudio.mp3'
     return send_from_directory('tmp_Audio/', filename)
 
@@ -98,17 +98,15 @@ def pdf_file():
 
 @app.route('/tmp_Result/checking.pdf')
 def pdf_file_checking():
-    """ Route to serve pdf file of fact-check """
+    """ Route to serve pdf file """
     filename = 'checking.pdf'
     return send_from_directory('tmp_Result/', filename)
-
 
 @app.route('/web/images/logo.png')
 def serve_jpg():
     """ Route to serve jpg file """
     filename = 'logo.png'
     return send_from_directory('web/images/', filename)
-
 
 @app.route('/', strict_slashes=False)
 def index():
