@@ -1,12 +1,15 @@
 $(document).ready(function () {
     $('#videoForm').submit(function (event) {
         event.preventDefault();
-
+        function getCurrentProtocol() {
+            return window.location.protocol;
+        }
+        const protocol = getCurrentProtocol();
         let url = '';
         if ($('#Check').is(':checked')) {
             url = 'http://127.0.0.1:5000/check';
         } else if ($('#Translate').is(':checked')) {
-            url = 'http://127.0.0.1:5000/translate';
+            url = protocol + '////truedetective.onrender.com/translate';
         } else if ($('#Convert').is(':checked')) {
             url = 'http://127.0.0.1:5000/convert';
         }
