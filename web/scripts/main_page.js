@@ -7,7 +7,7 @@ $(document).ready(function () {
         const protocol = getCurrentProtocol();
         let url = '';
         if ($('#Check').is(':checked')) {
-            url = 'http://127.0.0.1:5000/check';
+            url = protocol + '//truedetective.onrender.com/check'; // url = 'http://127.0.0.1:5000/check';
         } else if ($('#Translate').is(':checked')) {
             url = protocol + '//truedetective.onrender.com/translate'; //url = 'http://127.0.0.1:5000/translate' for localhost
         } else if ($('#Convert').is(':checked')) {
