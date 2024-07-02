@@ -9,9 +9,9 @@ $(document).ready(function () {
         if ($('#Check').is(':checked')) {
             url = 'http://127.0.0.1:5000/check';
         } else if ($('#Translate').is(':checked')) {
-            url = protocol + '////truedetective.onrender.com/translate';
+            url = protocol + '//truedetective.onrender.com/translate'; //url = 'http://127.0.0.1:5000/translate' for localhost
         } else if ($('#Convert').is(':checked')) {
-            url = 'http://127.0.0.1:5000/convert';
+            url = protocol + '//truedetective.onrender.com/convert'; //url = 'http://127.0.0.1:5000/convert'
         }
         const youtubeUrl = $('#youtubeUrl').val();
         const formData = new FormData();
